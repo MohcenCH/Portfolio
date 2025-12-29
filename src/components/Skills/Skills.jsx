@@ -46,7 +46,7 @@ const Skills = () => {
     <section id="skills" className={styles.skills} ref={sectionRef}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.titleNumber}>03.</span>
+          <span className={styles.titleNumber}>04.</span>
           Skills & Technologies
         </h2>
         <div className={styles.skillsGrid}>

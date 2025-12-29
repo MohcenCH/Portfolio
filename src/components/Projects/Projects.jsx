@@ -76,7 +76,7 @@ const Projects = () => {
     <section id="projects" className={styles.projects} ref={sectionRef}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.titleNumber}>02.</span>
+          <span className={styles.titleNumber}>03.</span>
           Project Showcase
         </h2>
         <div className={styles.projectsGrid}>

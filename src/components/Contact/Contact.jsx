@@ -63,7 +63,7 @@ const Contact = () => {
     <section id="contact" className={styles.contact} ref={sectionRef}>
       <div className={styles.container}>
         <h2 className={styles.sectionTitle}>
-          <span className={styles.titleNumber}>04.</span>
+          <span className={styles.titleNumber}>05.</span>
           Get In Touch
         </h2>
         <div className={styles.content}>
