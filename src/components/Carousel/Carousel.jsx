@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import styles from './Carousel.module.css'
 
 const Carousel = ({ images, projectTitle, onClose }) => {
@@ -43,9 +44,9 @@ const Carousel = ({ images, projectTitle, onClose }) => {
     }
   }
 
-  return (
+  const carouselContent = (
     <div className={styles.carouselOverlay} onClick={onClose}>
-      <div className={styles.carouselContainer} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.carouselContainer}>
         <button className={styles.closeButton} onClick={onClose} aria-label="Close carousel">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -60,7 +61,7 @@ const Carousel = ({ images, projectTitle, onClose }) => {
         >
           <button
             className={styles.navButton + ' ' + styles.prev}
-            onClick={goToPrevious}
+            onClick={(e) => { goToPrevious(); e.stopPropagation(); }}
             aria-label="Previous image"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -74,14 +75,14 @@ const Carousel = ({ images, projectTitle, onClose }) => {
                 key={index}
                 className={styles.imageSlide + ' ' + (index === currentIndex ? styles.active : '')}
               >
-                <img src={image} alt={`${projectTitle} - slide ${index + 1}`} />
+                <img src={image} alt={`${projectTitle} - slide ${index + 1}`} onClick={(e) => e.stopPropagation()} />
               </div>
             ))}
           </div>
 
           <button
             className={styles.navButton + ' ' + styles.next}
-            onClick={goToNext}
+            onClick={(e) => { goToNext(); e.stopPropagation(); }}
             aria-label="Next image"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -95,7 +96,7 @@ const Carousel = ({ images, projectTitle, onClose }) => {
             <button
               key={index}
               className={styles.dot + ' ' + (index === currentIndex ? styles.activeDot : '')}
-              onClick={() => setCurrentIndex(index)}
+              onClick={(e) => { setCurrentIndex(index); e.stopPropagation(); }}
               aria-label={`Go to slide ${index + 1}`}
             ></button>
           ))}
@@ -107,6 +108,8 @@ const Carousel = ({ images, projectTitle, onClose }) => {
       </div>
     </div>
   )
+
+  return createPortal(carouselContent, document.body)
 }
 
 export default Carousel

@@ -39,7 +39,7 @@ const Projects = () => {
       tech: ['React', 'Vite', 'HTML', 'CSS', 'Jest'],
       github: 'https://github.com/MohcenCH/caw-labs/tree/main/Lab7_Kanban_board',
       image: heroPhoto,
-      images: [heroPhoto, reactLogo, heroPhoto],
+      images: [heroPhoto],
     },
     {
       id: 2,
