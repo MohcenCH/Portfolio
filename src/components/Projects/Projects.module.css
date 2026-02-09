@@ -53,6 +53,99 @@
   animation: fadeInUp 0.6s ease forwards;
 }
 
+.projectImageWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(0, 245, 255, 0.2);
+  background: radial-gradient(
+    circle at 0% 0%,
+    rgba(0, 245, 255, 0.12),
+    transparent 55%
+  );
+  position: relative;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.projectImageWrapper:hover {
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.2), inset 0 0 20px rgba(0, 245, 255, 0.05);
+  transform: scale(1.02);
+}
+
+.projectImageWrapper:focus-visible {
+  outline: 2px solid rgba(0, 245, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.projectImage {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.projectImageWrapper:hover .projectImage {
+  transform: scale(1.05);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 245, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(0, 245, 255, 0.8);
+  opacity: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(2px);
+}
+
+.projectImageWrapper:hover .imageOverlay {
+  opacity: 1;
+}
+
+.imageCountBadge {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 245, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 245, 255, 0.4);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: rgba(0, 245, 255, 0.9);
+  font-weight: 600;
+  animation: slideInBadge 0.4s ease-out;
+}
+
+.imageCountBadge svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+@keyframes slideInBadge {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .projectCard::before {
   content: '';
   position: absolute;
@@ -66,16 +159,6 @@
   transition: transform 0.4s ease;
 }
 
-.projectCard:hover::before {
-  transform: scaleX(1);
-}
-
-.projectCard:hover {
-  transform: translateY(-8px);
-  border-color: var(--accent-neon);
-  box-shadow: 0 12px 40px rgba(0, 245, 255, 0.2);
-  background: rgba(255, 255, 255, 0.08);
-}
 
 .cardHeader {
   display: flex;
@@ -130,6 +213,7 @@
   font-size: 0.85rem;
   color: var(--accent-neon);
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .techTag:hover {

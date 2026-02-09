@@ -47,13 +47,6 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 245, 255, 0.2);
-  transition: all 0.5s ease;
-}
-
-.imageContainer:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 48px rgba(0, 245, 255, 0.4);
-  border-color: var(--accent-neon);
 }
 
 .profileImage {

@@ -1,0 +1,394 @@
+.carouselOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carouselContainer {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+  border: none;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(100, 200, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64c8ff;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(100, 200, 255, 0.8);
+  transform: rotate(90deg);
+}
+
+.closeButton svg {
+  width: 20px;
+  height: 20px;
+}
+
+.projectTitle {
+  display: none;
+}
+
+.carouselContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  min-height: 600px;
+  max-height: 80vh;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 0;
+  aspect-ratio: 16 / 10;
+  background: transparent;
+  max-height: 70vh;
+}
+
+.imageSlide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageSlide.active {
+  opacity: 1;
+}
+
+.imageSlide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: zoomIn 0.5s ease-out;
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(100, 200, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64c8ff;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.navButton:hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-color: rgba(100, 200, 255, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.navButton:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.navButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.dotsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  background: transparent;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(100, 200, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  background: rgba(100, 200, 255, 0.4);
+  transform: scale(1.2);
+}
+
+.dot.activeDot {
+  background: #64c8ff;
+  box-shadow: 0 0 15px rgba(100, 200, 255, 0.6);
+  width: 32px;
+  border-radius: 6px;
+}
+
+.counter {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: rgba(100, 200, 255, 0.8);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .carouselContainer {
+    width: 95%;
+    max-width: none;
+  }
+
+  .carouselContent {
+    flex-direction: column;
+    padding: 0;
+    min-height: auto;
+    gap: 0;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    min-height: 350px;
+    aspect-ratio: auto;
+  }
+
+  .navButton {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navButton svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .closeButton {
+    width: 36px;
+    height: 36px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .closeButton svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dotsContainer {
+    padding: 15px 10px;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .dot.activeDot {
+    width: 28px;
+  }
+
+  .counter {
+    bottom: 15px;
+    left: 15px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carouselContainer {
+    width: 100%;
+    max-width: none;
+  }
+
+  .carouselOverlay {
+    padding: 10px;
+  }
+
+  .carouselContent {
+    min-height: auto;
+  }
+
+  .imageWrapper {
+    min-height: 300px;
+    aspect-ratio: auto;
+  }
+
+  .navButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .navButton svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .prev {
+    left: 8px;
+  }
+
+  .next {
+    right: 8px;
+  }
+
+  .closeButton {
+    width: 32px;
+    height: 32px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .closeButton svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dotsContainer {
+    padding: 12px 5px;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .dot.activeDot {
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .counter {
+    bottom: 12px;
+    left: 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 320px) {
+  .navButton {
+    width: 32px;
+    height: 32px;
+  }
+
+  .imageWrapper {
+    min-height: 280px;
+  }
+
+  .dotsContainer {
+    padding: 10px 0;
+    gap: 4px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot.activeDot {
+    width: 20px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carouselContainer {
+    max-width: 1200px;
+  }
+
+  .carouselContent {
+    min-height: 700px;
+  }
+
+  .imageWrapper {
+    min-height: 600px;
+  }
+}
